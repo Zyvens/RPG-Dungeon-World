@@ -1,4 +1,4 @@
-const CACHE_NAME = "kael-app-v6";
+const CACHE_NAME = "kael-app-v7";
 const PRECACHE_URLS = ["./","./index.html","./styles.css","./app.js","./manifest.webmanifest","./assets/kael-portrait.webp","./assets/bg-winterfell.jpg","./assets/weapon-presa-de-lofurin.webp","./assets/shield-lobo-branco.webp","./assets/armor-escamas.webp","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-192.png","./icons/icon-maskable-512.png","./icons/favicon.png"];
 
 const UI_PATCH = `
@@ -6,7 +6,7 @@ const UI_PATCH = `
  const KEY='kael-character-images';
  let imgs={}; try{imgs=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(imgs))}catch(e){}};
- const styles=()=>{if(document.getElementById('kael-v6'))return;const s=document.createElement('style');s.id='kael-v6';s.textContent=\`
+ const styles=()=>{if(document.getElementById('kael-v7'))return;const s=document.createElement('style');s.id='kael-v7';s.textContent=\`
  .notes-card textarea#gameNotes{overflow-y:hidden!important;resize:none!important}
  #dynamicPeopleGrid.people-grid,#dynamicPeopleGrid.dynamic-people{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;gap:0!important;width:100%!important}
  #dynamicPeopleGrid .person{width:100%!important;max-width:none!important;margin:0!important;padding:20px 0!important;border:0!important;border-bottom:1px solid rgba(193,154,91,.22)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
@@ -20,9 +20,10 @@ const UI_PATCH = `
  @media(max-width:760px){#dynamicPeopleGrid .person-fields{grid-template-columns:96px 1fr!important}.char-photo{width:96px;height:122px;grid-column:1!important;grid-row:1/3!important}#dynamicPeopleGrid [data-person-key=name],#dynamicPeopleGrid [data-person-key=role]{grid-column:2!important}#dynamicPeopleGrid textarea[data-person-key=description]{grid-column:1/-1!important;min-height:190px!important}.char-photo-actions{opacity:1;flex-direction:column}.char-photo-actions button{font-size:.6rem;padding:4px 2px}}
  \`;document.head.appendChild(s)};
  const fitNotes=()=>{const n=document.getElementById('gameNotes');if(!n)return;n.style.overflowY='hidden';n.style.resize='none';n.style.height='auto';n.style.height=Math.max(n.scrollHeight,Math.round(innerHeight*(innerWidth<=760?.64:.58)))+'px';if(!n.dataset.ag){n.dataset.ag='1';n.addEventListener('input',fitNotes)}};
+ const renameHeading=()=>{document.querySelectorAll('#tab-historia h2').forEach(h=>{if(h.textContent.trim()==='Personagens do background')h.textContent='Personagens'})};
  const resizeImage=(file)=>new Promise((res,rej)=>{const r=new FileReader;r.onerror=rej;r.onload=()=>{const im=new Image;im.onerror=rej;im.onload=()=>{let w=im.width,h=im.height,m=700;if(w>m||h>m){if(w>h){h=Math.round(h*m/w);w=m}else{w=Math.round(w*m/h);h=m}}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);res(c.toDataURL('image/webp',.82))};im.src=r.result};r.readAsDataURL(file)});
  const enhance=()=>{const g=document.getElementById('dynamicPeopleGrid');if(!g)return;g.querySelectorAll('.person').forEach(p=>{const id=p.dataset.personId;if(!id||p.querySelector('.char-photo'))return;const fields=p.querySelector('.person-fields');if(!fields)return;const box=document.createElement('div');box.className='char-photo '+(imgs[id]?'':'empty');box.innerHTML='<img alt="Imagem do personagem"><div class="char-photo-placeholder">Imagem<br>opcional</div><div class="char-photo-actions"><button type="button" class="choose">Imagem</button><button type="button" class="remove">×</button></div><input type="file" accept="image/*" hidden>';if(imgs[id])box.querySelector('img').src=imgs[id];const input=box.querySelector('input');box.querySelector('.choose').onclick=()=>input.click();input.onchange=async()=>{if(!input.files[0])return;imgs[id]=await resizeImage(input.files[0]);save();box.querySelector('img').src=imgs[id];box.classList.remove('empty')};box.querySelector('.remove').onclick=()=>{delete imgs[id];save();box.querySelector('img').removeAttribute('src');box.classList.add('empty')};fields.prepend(box)});g.querySelectorAll('textarea[data-person-key=description]').forEach(a=>a.setAttribute('rows',innerWidth<=760?'8':'7'))};
- const apply=()=>{styles();fitNotes();enhance()};apply();new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});setTimeout(apply,100);setTimeout(apply,500);addEventListener('resize',apply);
+ const apply=()=>{styles();renameHeading();fitNotes();enhance()};apply();new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});setTimeout(apply,100);setTimeout(apply,500);addEventListener('resize',apply);
 })();`;
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(PRECACHE_URLS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
