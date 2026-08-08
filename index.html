@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+    <meta name="theme-color" content="#07111b" />
+    <meta name="description" content="Ficha completa de Kael Frostborn, guerreiro de Dungeon World — editável." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Kael Frostborn" />
+    <title>Kael Frostborn — Ficha do Guerreiro</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/favicon.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+      <defs>
+        <g id="icon-defs" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3.4" /><path d="M5 20c1.4-4.2 4-6.4 7-6.4s5.6 2.2 7 6.4" /></symbol>
+          <symbol id="icon-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5" /><circle cx="8.2" cy="8.2" r="1.15" fill="currentColor" stroke="none" /><circle cx="15.8" cy="8.2" r="1.15" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none" /><circle cx="8.2" cy="15.8" r="1.15" fill="currentColor" stroke="none" /><circle cx="15.8" cy="15.8" r="1.15" fill="currentColor" stroke="none" /></symbol>
+          <symbol id="icon-scale" viewBox="0 0 24 24"><path d="M12 3v18M7.5 21h9M4.5 7h15" /><path d="M4.5 7 2 12.5a2.7 2.7 0 0 0 5 0Z" /><path d="M19.5 7 17 12.5a2.7 2.7 0 0 0 5 0Z" /></symbol>
+          <symbol id="icon-bolt" viewBox="0 0 24 24"><path d="M13.2 2.8 5.6 13.6h5.1L10 21.2l7.9-11.4h-5.1l.4-7Z" stroke-linejoin="round" /></symbol>
+          <symbol id="icon-blade" viewBox="0 0 24 24"><path d="M19 5 7.5 16.5" /><path d="M13.5 5H19v5.5" /><path d="M7.5 16.5 5 19M9 18l-2.5 2.5M11 20l-2.5 2.5" /></symbol>
+          <symbol id="icon-crest" viewBox="0 0 24 24"><path d="M12 3.2 19 6v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-2.8Z" stroke-linejoin="round" /></symbol>
+          <symbol id="icon-link" viewBox="0 0 24 24"><path d="M9.5 14.5a3.8 3.8 0 0 0 5.7 0l2.6-2.6a3.8 3.8 0 0 0-5.4-5.4l-1 1" /><path d="M14.5 9.5a3.8 3.8 0 0 0-5.7 0l-2.6 2.6a3.8 3.8 0 0 0 5.4 5.4l1-1" /></symbol>
+          <symbol id="icon-backpack" viewBox="0 0 24 24"><path d="M9 7V5.6a3 3 0 0 1 6 0V7" /><rect x="5.5" y="7" width="13" height="14" rx="3.2" /><rect x="9.3" y="11" width="5.4" height="3.6" rx="0.8" /><path d="M5.5 12.5h-1M19.5 12.5h-1" /></symbol>
+          <symbol id="icon-gem" viewBox="0 0 24 24"><path d="M4.5 9 8.5 4h7l4 5-9.5 11.5Z" stroke-linejoin="round" /><path d="M4.5 9h15M8.5 4l1.7 5-1.7 9M15.5 4l-1.7 5 1.7 9" /></symbol>
+          <symbol id="icon-book" viewBox="0 0 24 24"><path d="M12 6.2c-2-1.4-5-1.8-8-.8v12.8c3-1 6-.6 8 .8 2-1.4 5-1.8 8-.8V5.4c-3-1-6-.6-8 .8Z" stroke-linejoin="round" /><path d="M12 6.2v12.8" /></symbol>
+          <symbol id="icon-scroll" viewBox="0 0 24 24"><path d="M6 4h11a2 2 0 0 1 2 2v12.3a1 1 0 0 1-1.6.8L16 18l-2 1.5L12 18l-2 1.5L8 18l-1.6 1.1A1 1 0 0 1 5 18.3V6a2 2 0 0 1 1-2Z" stroke-linejoin="round" /><path d="M8.5 9h7M8.5 12.5h4.5" /></symbol>
+          <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20 4.7 12.9a5 5 0 1 1 7.3-6.8 5 5 0 1 1 7.3 6.8Z" stroke-linejoin="round" /></symbol>
+          <symbol id="icon-star" viewBox="0 0 24 24"><path d="M12 3.3 14.5 9l6.2.6-4.7 4.2 1.4 6.1-5.4-3.2-5.4 3.2 1.4-6.1-4.7-4.2 6.2-.6Z" stroke-linejoin="round" /></symbol>
+          <symbol id="icon-flame" viewBox="0 0 24 24"><path d="M12 3.2c1 3-1.2 4.4-2.3 6.4-1.4 2.5.2 4.2 2.3 4.2s3.9-1.8 2.3-4.2c2.2 1 3.7 3.2 3.7 5.6a6 6 0 0 1-12 0c0-4.4 3.4-7 6-11.9Z" stroke-linejoin="round" /></symbol>
+          <symbol id="icon-pencil" viewBox="0 0 24 24"><path d="m14.5 5.5 4 4L8 20 4 21l1-4Z" stroke-linejoin="round" /><path d="m13 7 4 4" /></symbol>
+          <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.4" /><circle cx="9" cy="10" r="1.6" /><path d="m4.5 17 4.8-5 3.4 3.6 2.6-2.9L20 17" /></symbol>
+        </g>
+      </defs>
+    </svg>
+
+    <div id="bgLayer" class="bg-layer"></div>
+    <div id="bgOverlay" class="bg-overlay"></div>
+
+    <header class="topbar">
+      <div class="topbar-brand">
+        <span class="dot"></span>Kael Frostborn <span class="muted">· Dungeon World</span>
+      </div>
+      <button id="editToggle" class="gear-btn" type="button" aria-label="Abrir modo de edição" title="Modo de edição">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+          <path d="M19.4 13a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V19a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 17.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 13a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 7a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 2.68a1.65 1.65 0 0 0 1-1.51V1a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 7a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+        </svg>
+      </button>
+    </header>
+
+    <div id="editBar" class="edit-bar">
+      <p><strong>Modo de edição ativo.</strong> Toque nos textos para reescrever, use os botões de imagem para trocar retrato/fundo/equipamentos, e marque as opções da ficha conforme Kael evoluir.</p>
+      <div class="edit-actions">
+        <button id="saveBtn" class="btn" type="button">Salvar e sair da edição</button>
+        <button id="exportBtn" class="btn ghost" type="button">Exportar backup</button>
+        <button id="importBtn" class="btn ghost" type="button">Importar backup</button>
+        <button id="resetBtn" class="btn ghost danger" type="button">Restaurar ficha original</button>
+        <input type="file" id="importFile" accept="application/json" hidden />
+      </div>
+      <p id="saveStatus" class="save-status" aria-live="polite"></p>
+    </div>
+
+    <header class="hero">
+      <div class="hero-portrait frame-corners">
+        <img id="portraitImg" src="assets/kael-portrait.webp" alt="Retrato de Kael Frostborn empunhando a Presa de Lofurin" />
+        <button class="img-edit-btn edit-only" type="button" data-img-target="portrait"><svg class="btn-icon"><use href="#icon-pencil"></use></svg>Trocar retrato</button>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Dungeon World</p>
+        <h1>
+          <span class="field-text" data-field="firstName" contenteditable="false">Kael</span>
+          <span class="field-text accent" data-field="lastName" contenteditable="false">Frostborn</span>
+        </h1>
+        <p class="lead field-text" data-field="tagline" contenteditable="false">“O gelo conserva aquilo que merece sobreviver.”</p>
+        <div class="hero-tags">
+          <span class="tag" data-field="tagRace" data-echo="race">Humano</span>
+          <span class="tag" data-field="tagAlign" data-echo="alignment">Bom</span>
+          <span class="tag">Guerreiro</span>
+        </div>
+      </div>
+      <button class="bg-edit-btn edit-only" type="button" id="bgEditBtn"><svg class="btn-icon"><use href="#icon-image"></use></svg>Trocar fundo do app</button>
+    </header>
+
+    <nav class="tabnav">
+      <button class="tab-btn active" data-tab="ficha" type="button">Ficha</button>
+      <button class="tab-btn" data-tab="equipamento" type="button">Equipamento</button>
+      <button class="tab-btn" data-tab="avancados" type="button">Movimentos avançados</button>
+      <button class="tab-btn" data-tab="historia" type="button">História</button>
+    </nav>
+
+    <main class="shell">
+      <!-- ===================== FICHA (Manual, página 11) ===================== -->
+      <section id="tab-ficha" class="tab-panel active">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-user"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Nome &amp; aparência</h2>
+              <p class="hint">Estrutura idêntica à página 11 do manual de classes — Guerreiro.</p>
+            </div>
+          </div>
+          <div class="grid-2">
+            <label class="field">
+              <span class="field-label">Nome</span>
+              <input class="field-input" type="text" data-field="charName" disabled />
+            </label>
+            <details class="names-ref">
+              <summary>Sugestões de nomes por raça (referência do manual)</summary>
+              <ul>
+                <li><b>Anão:</b> Ozruk, Surtur, Brunhilda, Annika, Janos, Greta, Dim, Rundrig, Jarl, Xotoq</li>
+                <li><b>Elfo:</b> Elohiir, Sharaseth, Hasrith, Shevaral, Cadeus, Eldar, Kithracet, Thelian</li>
+                <li><b>Halfling:</b> Finnegan, Olive, Randolph, Bartleby, Aubrey, Baldwin, Becca</li>
+                <li><b>Humano:</b> Hawke, Rudiger, Gregor, Brianne, Walton, Castor, Shanna, Ajax, Hob</li>
+              </ul>
+            </details>
+          </div>
+
+          <div class="apparence-grid">
+            <label class="field combo">
+              <span class="field-label">Olhos</span>
+              <select class="field-input select-input" data-field="apparenceEyes" disabled>
+                <option value="duros">Olhos Duros</option>
+                <option value="mortos">Olhos Mortos</option>
+                <option value="ansiosos">Olhos Ansiosos</option>
+              </select>
+            </label>
+            <label class="field combo">
+              <span class="field-label">Cabelo</span>
+              <select class="field-input select-input" data-field="apparenceHair" disabled>
+                <option value="bagunçado">Cabelo Bagunçado</option>
+                <option value="raspado">Cabelo Raspado</option>
+                <option value="elmo">Elmo Usado</option>
+              </select>
+            </label>
+            <label class="field combo">
+              <span class="field-label">Pele</span>
+              <select class="field-input select-input" data-field="apparenceSkin" disabled>
+                <option value="calosa">Pele Calosa</option>
+                <option value="bronzeada">Pele Bronzeada</option>
+                <option value="cicatrizada">Pele Cicatrizada</option>
+              </select>
+            </label>
+            <label class="field combo">
+              <span class="field-label">Corpo</span>
+              <select class="field-input select-input" data-field="apparenceBody" disabled>
+                <option value="forma">Corpo em Forma</option>
+                <option value="flexivel">Corpo Flexível</option>
+                <option value="desgastado">Corpo Desgastado</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">Detalhe adicional de aparência</span>
+            <input class="field-input" type="text" data-field="apparenceDetail" disabled />
+          </label>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-dice"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Atributos</h2>
+              <p class="hint">Distribua estes valores entre os atributos: 16 (+2), 15 (+1), 13 (+1), 12 (+0), 9 (+0), 8 (−1).</p>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat">
+              <span class="field-label">Força <em class="debility">Fraco</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="strength" disabled />
+                <em class="mod" data-mod-for="strength">+2</em>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="field-label">Destreza <em class="debility">Trêmulo</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="dexterity" disabled />
+                <em class="mod" data-mod-for="dexterity">+0</em>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="field-label">Constituição <em class="debility">Doente</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="constitution" disabled />
+                <em class="mod" data-mod-for="constitution">+1</em>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="field-label">Inteligência <em class="debility">Atordoado</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="intelligence" disabled />
+                <em class="mod" data-mod-for="intelligence">−1</em>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="field-label">Sabedoria <em class="debility">Confuso</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="wisdom" disabled />
+                <em class="mod" data-mod-for="wisdom">+0</em>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="field-label">Carisma <em class="debility">Marcado</em></span>
+              <div class="stat-line">
+                <input class="field-input score" type="number" min="3" max="18" data-field="charisma" disabled />
+                <em class="mod" data-mod-for="charisma">+0</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="hud-strip">
+            <div class="hud-item">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-blade"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Dano</span>
+                <input class="field-input hud-input" type="text" data-field="damage" disabled />
+              </div>
+            </div>
+            <div class="hud-item">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-crest"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Armadura</span>
+                <input class="field-input hud-input" type="number" min="0" data-field="armor" disabled />
+              </div>
+            </div>
+            <div class="hud-item wide">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-heart"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Pontos de vida</span>
+                <div class="hud-pair">
+                  <input class="field-input hud-input" type="number" min="0" data-field="hpCurrent" disabled aria-label="PV atual" />
+                  <span class="hud-sep">/</span>
+                  <input class="field-input hud-input" type="number" min="1" data-field="hpMax" disabled aria-label="PV máximo" />
+                </div>
+              </div>
+            </div>
+            <div class="hud-item">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Nível</span>
+                <input class="field-input hud-input" type="number" min="1" max="10" data-field="level" disabled />
+              </div>
+            </div>
+            <div class="hud-item wide">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-flame"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Experiência</span>
+                <div class="hud-pair">
+                  <input class="field-input hud-input" type="number" min="0" data-field="xp" disabled aria-label="XP atual" />
+                  <span class="hud-sep">/</span>
+                  <output id="xpGoalOut" class="field-output hud-input">8</output>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="rule-note">PV máximo é igual a 10 + Constituição. A meta de XP é recalculada automaticamente como nível atual + 7.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-scale"></use></svg></span>
+            <div class="card-head-text"><h2>Alinhamento</h2></div>
+          </div>
+          <label class="field combo">
+            <span class="field-label">Alinhamento</span>
+            <select class="field-input select-input" data-field="alignment" disabled>
+              <option value="bom">Bom</option>
+              <option value="neutro">Neutro</option>
+              <option value="mau">Mau</option>
+            </select>
+          </label>
+          <p class="choice-desc" data-desc-for="alignment"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-bolt"></use></svg></span>
+            <div class="card-head-text"><h2>Movimentos iniciais</h2></div>
+          </div>
+          <div class="moves-list">
+            <div class="move">
+              <b>Dobrar Barras, Suspender Portais (FOR)</b>
+              <span>Quando usar força bruta para destruir um objeto inanimado, role+FOR. Com 10+, escolha 3. Com 7–9, escolha 2: não demora muito · nada de valor é danificado · não provoca uma barulheira absurda · você pode consertar o objeto sem muito esforço.</span>
+            </div>
+            <div class="move">
+              <b>Fortificado</b>
+              <span>Ignore o rótulo desengonçada em qualquer armadura que você vestir.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-blade"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Arma favorita</h2>
+              <p class="hint">Esta é sua arma. Existem muitas iguais a ela, mas esta é sua. Ela é sua melhor amiga, é sua vida. Empunhe-a e seja autêntico.</p>
+            </div>
+          </div>
+          <label class="field">
+            <span class="field-label">Nome da arma favorita</span>
+            <input class="field-input" type="text" data-field="weaponName" disabled />
+          </label>
+
+          <div class="weapon-showcase frame-corners">
+            <img id="weaponImg" src="assets/weapon-presa-de-lofurin.webp" alt="Presa de Lofurin" />
+            <button class="img-edit-btn edit-only" type="button" data-img-target="weaponImg"><svg class="btn-icon"><use href="#icon-pencil"></use></svg>Trocar imagem</button>
+          </div>
+
+          <div class="grid-2">
+            <label class="field combo">
+              <span class="field-label">Descrição básica <em>(peso 2)</em></span>
+              <select class="field-input select-input" data-field="weaponDesc" disabled>
+                <option value="espada">Espada</option>
+                <option value="machado">Machado</option>
+                <option value="martelo">Martelo</option>
+                <option value="lanca">Lança</option>
+                <option value="mangual">Mangual</option>
+                <option value="punhos">Punhos</option>
+              </select>
+            </label>
+            <label class="field combo">
+              <span class="field-label">Distância</span>
+              <select class="field-input select-input" data-field="weaponDist" disabled>
+                <option value="mao">Mão</option>
+                <option value="corpo">Corpo a corpo</option>
+                <option value="alcance">Alcance</option>
+              </select>
+            </label>
+          </div>
+
+          <span class="field-label">Escolha duas melhorias</span>
+          <div class="choice-group" data-group="weaponUpg" data-max="2">
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="ganchos" disabled />Ganchos e espinhos — +1 de dano e +1 de peso.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="afiada" disabled />Afiada — +2 penetrante.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="balanceada" disabled />Perfeitamente balanceada — torna-se precisa.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="serrilhado" disabled />Fio serrilhado — +1 de dano.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="brilha" disabled />Brilha na presença de um tipo de criatura à sua escolha.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="enorme" disabled />Enorme — torna-se grotesca e poderosa.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="versatil" disabled />Versátil — escolha um alcance adicional.</label>
+            <label class="choice"><input type="checkbox" data-field="weaponUpg" value="qualidade" disabled />Alta qualidade — −1 de peso.</label>
+          </div>
+          <label class="field">
+            <span class="field-label">Criatura escolhida (se marcou "Brilha na presença de...")</span>
+            <input class="field-input" type="text" data-field="weaponUpgCreature" disabled />
+          </label>
+
+          <label class="field combo">
+            <span class="field-label">Aparência da arma</span>
+            <select class="field-input select-input" data-field="weaponLook" disabled>
+              <option value="antiga">Antiga</option>
+              <option value="imaculada">Imaculada</option>
+              <option value="ornada">Ornada</option>
+              <option value="manchada">Manchada de sangue</option>
+              <option value="sinistra">Sinistra</option>
+            </select>
+          </label>
+          <p class="rule-note">Sua arma favorita é especial, não apenas um item mundano. A não ser que você realize alguma ação que realmente a coloque em risco, ela jamais será perdida permanentemente.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-crest"></use></svg></span>
+            <div class="card-head-text"><h2>Raça</h2></div>
+          </div>
+          <label class="field combo">
+            <span class="field-label">Raça</span>
+            <select class="field-input select-input" data-field="race" disabled>
+              <option value="anao">Anão</option>
+              <option value="elfo">Elfo</option>
+              <option value="halfling">Halfling</option>
+              <option value="humano">Humano</option>
+            </select>
+          </label>
+          <p class="choice-desc" data-desc-for="race"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-link"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Vínculos</h2>
+              <p class="hint">Preencha pelo menos um dos espaços em branco com o nome de algum companheiro.</p>
+            </div>
+          </div>
+          <div class="bonds-list">
+            <p class="bond-line"><input class="field-input bond-input" type="text" placeholder="nome" data-field="bond1" disabled /> me deve sua vida, quer admita isso ou não.</p>
+            <p class="bond-line">Eu jurei proteger <input class="field-input bond-input wide" type="text" placeholder="quem" data-field="bond2" disabled />.</p>
+            <p class="bond-line">Eu me preocupo com a capacidade de <input class="field-input bond-input" type="text" placeholder="nome" data-field="bond3" disabled /> de sobreviver dentro das masmorras.</p>
+            <p class="bond-line"><input class="field-input bond-input" type="text" placeholder="nome" data-field="bond4" disabled /> é muito mole, mas o tornarei resistente como eu.</p>
+          </div>
+          <label class="field">
+            <span class="field-label">Condições e notas de campanha</span>
+            <textarea class="field-input textarea" rows="3" data-field="campaignNotes" disabled></textarea>
+          </label>
+        </div>
+      </section>
+
+      <!-- ===================== EQUIPAMENTO (Manual, página 12) ===================== -->
+      <section id="tab-equipamento" class="tab-panel">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-backpack"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Equipamento</h2>
+              <p class="hint">Sua carga é igual a 12+FOR. Você possui sua arma favorita e rações de masmorra (5 usos, peso 1).</p>
+            </div>
+          </div>
+          <div class="hud-strip single">
+            <div class="hud-item wide">
+              <svg class="hud-icon" aria-hidden="true"><use href="#icon-backpack"></use></svg>
+              <div class="hud-body">
+                <span class="field-label">Carga máxima (12 + mod. de Força)</span>
+                <output id="loadMaxOut" class="field-output hud-input">14</output>
+              </div>
+            </div>
+          </div>
+
+          <label class="field combo">
+            <span class="field-label">Escolha suas defesas</span>
+            <select class="field-input select-input" data-field="defenses" disabled>
+              <option value="malha">Cota de malha</option>
+              <option value="escamas">Armadura de escamas</option>
+            </select>
+          </label>
+          <p class="choice-desc" data-desc-for="defenses"></p>
+
+          <span class="field-label">Escolha dois</span>
+          <div class="choice-group" data-group="gearChoice" data-max="2">
+            <label class="choice"><input type="checkbox" data-field="gearChoice" value="pocao" disabled />Poção de cura (2 usos, peso 0).</label>
+            <label class="choice"><input type="checkbox" data-field="gearChoice" value="escudo" disabled />Escudo (armadura +1, peso 2).</label>
+            <label class="choice"><input type="checkbox" data-field="gearChoice" value="antitoxina" disabled />Antitoxina (1 uso), rações (5 usos), cataplasmas e ervas (2 usos).</label>
+            <label class="choice"><input type="checkbox" data-field="gearChoice" value="moedas" disabled />22 moedas.</label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-gem"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Relíquias de Kael</h2>
+              <p class="hint">As três peças canônicas mantêm a mesma linguagem visual: aço negro, ouro branco, azul profundo e a heráldica do lobo.</p>
+            </div>
+          </div>
+          <div class="gear-cards">
+            <article class="gear-card">
+              <div class="gear-visual frame-corners">
+                <img id="weaponImg2" src="assets/weapon-presa-de-lofurin.webp" alt="Presa de Lofurin" />
+                <button class="img-edit-btn small edit-only" type="button" data-img-target="weaponImg"><svg class="btn-icon"><use href="#icon-pencil"></use></svg>Trocar</button>
+              </div>
+              <h3>Presa de Lofurin</h3>
+              <p>Machado de guerra de uma mão, assimétrico e ornamentado. Aço negro e prata, inscrições rúnicas no cabo, couro branco na empunhadura, veios azul-gelo discretos e pomo em forma de lobo.</p>
+            </article>
+            <article class="gear-card">
+              <div class="gear-visual frame-corners">
+                <img id="shieldImg" src="assets/shield-lobo-branco.webp" alt="Escudo do Lobo Branco" />
+                <button class="img-edit-btn small edit-only" type="button" data-img-target="shieldImg"><svg class="btn-icon"><use href="#icon-pencil"></use></svg>Trocar</button>
+              </div>
+              <h3>Escudo do Lobo Branco</h3>
+              <p>Escudo circular de madeira azul-marinho, aro de ferro escurecido, rebites de bronze e cabeça de lobo em alto-relevo com olhos azul-gelo. +1 armadura, peso 2.</p>
+            </article>
+            <article class="gear-card">
+              <div class="gear-visual frame-corners">
+                <img id="armorImg" src="assets/armor-escamas.webp" alt="Armadura do Campeão" />
+                <button class="img-edit-btn small edit-only" type="button" data-img-target="armorImg"><svg class="btn-icon"><use href="#icon-pencil"></use></svg>Trocar</button>
+              </div>
+              <h3>Armadura do Campeão</h3>
+              <p>Armadura pesada de escamas e placas negras, bronze envelhecido, pele clara nos ombros, capa azul-marinho e insígnias do lobo. Armadura 2, peso 3.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== MOVIMENTOS AVANÇADOS (Manual, página 12) ===================== -->
+      <section id="tab-avancados" class="tab-panel">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-book"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Movimentos avançados</h2>
+              <p class="hint">Ao ganhar um nível entre 2 e 5, escolha um movimento da coluna esquerda. Ao ganhar um nível entre 6 e 10, escolha um da coluna direita — ou qualquer um ainda não escolhido da coluna 2–5.</p>
+            </div>
+          </div>
+          <div class="advanced-grid">
+            <div class="advanced-col">
+              <h3>Níveis 2–5</h3>
+              <label class="adv-move"><input type="checkbox" data-field="adv_implacavel" disabled /><span><b>Implacável</b> — Quando causar dano, cause +1d4 de dano.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_reliquia" disabled /><span><b>Relíquia de Família</b> — Quando consultar os espíritos que residem dentro de sua arma favorita, role+CAR. Com 10+, o MJ dá muitos detalhes. Com 7–9, uma vaga impressão.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_maestriaArmadura" disabled /><span><b>Maestria com Armadura</b> — Quando deixar sua armadura absorver a maior parte de um golpe, o dano é negado e você deve reduzir armadura ou escudo em 1. Se chegar a 0, é destruído.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_armaMelhorada" disabled /><span><b>Arma Melhorada</b> — Escolha uma melhoria extra para sua arma favorita.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_visaoRubra" disabled /><span><b>Visão Rubra</b> — Quando discernir a realidade durante um combate, receba +1.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_inquisidor" disabled /><span><b>Inquisidor</b> — Quando negociar usando ameaças de violência iminente como influência, use FOR no lugar de CAR.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_cheiroSangue" disabled /><span><b>Cheiro de Sangue</b> — Após matar e pilhar contra um inimigo, seu próximo ataque contra ele recebe +1d4 de dano.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_amadorMulti" disabled /><span><b>Amador em Multiclasse</b> — Escolha e adquira um movimento de outra classe, considerando 1 nível a menos.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_peleFerro" disabled /><span><b>Pele de Ferro</b> — Você recebe +1 de armadura.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_ferreiro" disabled /><span><b>Ferreiro</b> — Com acesso a uma forja, transfira os poderes mágicos de uma arma para sua arma favorita (a arma original é destruída).</span></label>
+            </div>
+            <div class="advanced-col">
+              <h3>Níveis 6–10</h3>
+              <label class="adv-move"><input type="checkbox" data-field="adv_sedeSangue" disabled /><span><b>Sede de Sangue</b> <em>(substitui Implacável)</em> — Quando causar dano, cause +1d8 de dano.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_perfeicaoArmadura" disabled /><span><b>Perfeição com Armadura</b> <em>(substitui Maestria com Armadura)</em> — O dano é negado e você recebe +1 adiante contra o atacante, mas reduz armadura ou escudo em 1.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_mauOlhado" disabled /><span><b>Mau Olhado</b> <em>(requer Visão Rubra)</em> — Ao entrar em combate, role+CAR. Com 10+, domínio 2; com 7–9, domínio 1. Gaste domínio para congelar um PNJ com contato visual. Com 6-, inimigos te identificam como maior ameaça.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_gostoSangue" disabled /><span><b>Gosto por Sangue</b> <em>(substitui Sede de Sangue)</em> — Após matar e pilhar, seu próximo ataque contra o mesmo inimigo recebe +1d8 de dano.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_iniciadoMulti" disabled /><span><b>Iniciado em Multiclasse</b> <em>(requer Amador em Multiclasse)</em> — Escolha e adquira outro movimento de outra classe, considerando 1 nível a menos.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_peleAco" disabled /><span><b>Pele de Aço</b> <em>(substitui Pele de Ferro)</em> — Você recebe +2 de armadura.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_olhosMorte" disabled /><span><b>Através dos Olhos da Morte</b> — Ao entrar em batalha, role+SAB. Com 10+, diga quem sobreviverá E quem morrerá. Com 7–9, diga um dos dois (apenas PNJs). Com 6-, você vê sua própria morte e recebe -1 na batalha.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_focoArmamento" disabled /><span><b>Foco no Armamento</b> — Ao verificar as armas de seus inimigos, pergunte ao MJ qual é o dano que elas causam.</span></label>
+              <label class="adv-move"><input type="checkbox" data-field="adv_guerreiroSuperior" disabled /><span><b>Guerreiro Superior</b> — Ao matar e pilhar, caso role 12+, cause seu dano, evite o contra-ataque e impressione, desanime ou amedronte seu adversário.</span></label>
+            </div>
+          </div>
+          <label class="field">
+            <span class="field-label">Outras anotações de progressão</span>
+            <textarea class="field-input textarea" rows="3" data-field="advancedMovesNotes" placeholder="Registre aqui detalhes extras de cada movimento adquirido." disabled></textarea>
+          </label>
+        </div>
+      </section>
+
+      <!-- ===================== HISTÓRIA (contexto/lore) ===================== -->
+      <section id="tab-historia" class="tab-panel">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-scroll"></use></svg></span>
+            <div class="card-head-text">
+              <h2>Uma vida talhada pela tempestade</h2>
+              <p class="hint">A saga em quatro atos.</p>
+            </div>
+          </div>
+          <div class="story-grid">
+            <article class="story-item">
+              <span class="number">01</span>
+              <h3>O filho da tempestade</h3>
+              <p class="field-text" data-field="story1" contenteditable="false">Kael foi encontrado recém-nascido além da Grande Muralha, protegido por um lobo branco colossal. Ragnar o acolheu como filho de Winterfell.</p>
+            </article>
+            <article class="story-item">
+              <span class="number">02</span>
+              <h3>Forjado por Bjorn</h3>
+              <p class="field-text" data-field="story2" contenteditable="false">Treinado em combate, disciplina e dever, tornou-se um campeão cuja força existe para proteger os vulneráveis.</p>
+            </article>
+            <article class="story-item">
+              <span class="number">03</span>
+              <h3>A marca de Lofurin</h3>
+              <p class="field-text" data-field="story3" contenteditable="false">Ao salvar uma patrulha e resgatar Eira, recebeu a Presa de Lofurin e passou de guerreiro a figura profética.</p>
+            </article>
+            <article class="story-item">
+              <span class="number">04</span>
+              <h3>O preço do juramento</h3>
+              <p class="field-text" data-field="story4" contenteditable="false">Seu maior medo não é morrer, mas falhar com Winterfell e com a pessoa que jurou proteger.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-icon-badge"><svg class="card-icon"><use href="#icon-user"></use></svg></span>
+            <div class="card-head-text"><h2>Personagens do background</h2></div>
+          </div>
+          <div class="people-grid">
+            <div class="person">
+              <h3>Sigrid Frostweaver</h3>
+              <p class="eyebrow small">Profecia</p>
+              <p>Sacerdotisa de Lofurin e intérprete dos sinais.</p>
+            </div>
+            <div class="person">
+              <h3>Eira</h3>
+              <p class="eyebrow small">Lealdade</p>
+              <p>Batedora de Winterfell, aliada e elo humano de Kael.</p>
+            </div>
+            <div class="person">
+              <h3>Darius Valerius</h3>
+              <p class="eyebrow small">Conflito</p>
+              <p>Leão Dourado de Solari, rival e possível aliado.</p>
+            </div>
+          </div>
+          <p class="rule-note">Lugares-chave: Winterfell · Grande Muralha · Santuário de Lofurin · Campo da Profecia · Solari.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Ficha de Kael Frostborn — estrutura fiel às páginas 11 e 12 do Manual de Classes de Dungeon World. Feita para uso pessoal à mesa.</p>
+    </footer>
+
+    <div id="imgPickerModal" class="modal hidden">
+      <div class="modal-box">
+        <h3>Trocar imagem</h3>
+        <p>Escolha uma foto do seu tablet. Ela fica salva apenas neste dispositivo.</p>
+        <input type="file" id="imgPickerInput" accept="image/*" />
+        <div class="modal-actions">
+          <button id="imgPickerCancel" class="btn ghost" type="button">Cancelar</button>
+          <button id="imgPickerRemove" class="btn ghost danger" type="button">Usar imagem original</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
