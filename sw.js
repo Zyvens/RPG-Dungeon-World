@@ -1,5 +1,1 @@
-importScripts('./sw-legacy.js');
-
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.delete('kael-app-v14'));
-});
+importScripts('./sw-legacy.js?rev=17');
