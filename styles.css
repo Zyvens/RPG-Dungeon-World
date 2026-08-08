@@ -397,14 +397,7 @@ body.editing .field-text[contenteditable="true"] {
   padding-right: 36px;
 }
 .select-input option { background: var(--panel); color: var(--white); }
-.select-input:disabled {
-  opacity: 1;
-  border-color: transparent;
-  background: transparent;
-  padding-left: 2px;
-  color: var(--white);
-  font-weight: 600;
-}
+.select-input:disabled { opacity: 0.85; color: var(--white); font-weight: 600; }
 body.editing .select-input:not(:disabled) {
   border-color: var(--gold);
   background: rgba(193, 154, 91, 0.08);
@@ -435,18 +428,6 @@ body.editing .field.combo::after { opacity: 1; }
   margin: 12px 0 0;
   min-height: 1.3em;
 }
-
-.names-ref {
-  align-self: start;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-.names-ref summary { cursor: pointer; color: var(--gold2); font-weight: 600; }
-.names-ref ul { margin: 8px 0 0; padding-left: 18px; }
-.names-ref li { margin: 4px 0; }
 
 .apparence-grid {
   display: grid;
@@ -513,15 +494,47 @@ body.editing .choice:hover { border-color: var(--gold2); }
 .choice input:disabled,
 .adv-move input:disabled { opacity: 0.75; }
 
-.debility {
-  display: block;
+.debility-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 3px 0 8px;
+  cursor: default;
+}
+.debility-toggle span {
   font-style: italic;
   font-weight: 400;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   text-transform: none;
   letter-spacing: 0;
+  transition: color 0.15s ease;
 }
+.debility-toggle input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border: 1.4px solid var(--line);
+  border-radius: 4px;
+  background-color: rgba(7, 17, 27, 0.6);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 9px 9px;
+  cursor: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.debility-toggle input:disabled { opacity: 0.85; }
+body.editing .debility-toggle { cursor: pointer; }
+body.editing .debility-toggle:hover span { color: var(--gold2); }
+.debility-toggle input:checked {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  box-shadow: 0 0 8px rgba(193, 88, 91, 0.5);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2307111b' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 12.5 9.5 18 20 6'/%3E%3C/svg%3E");
+}
+.debility-toggle:has(input:checked) span { color: var(--danger); font-weight: 700; font-style: normal; }
 
 .stats-grid {
   display: grid;
@@ -539,13 +552,16 @@ body.editing .choice:hover { border-color: var(--gold2); }
   min-width: 34px;
 }
 
-.hud-strip {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-}
-.hud-strip.single { grid-template-columns: minmax(0, 320px); }
-.hud-item.wide { grid-column: span 2; }
+.hud-strip { display: flex; flex-direction: column; gap: 10px; }
+.hud-strip.single { display: grid; grid-template-columns: minmax(0, 320px); }
+.hud-strip.spaced { margin-bottom: 22px; }
+
+/* Each row lays out its own items explicitly (level+xp on top, hp+armor+damage
+   below) instead of relying on column-span math that broke at narrower widths. */
+.hud-row { display: grid; gap: 10px; }
+.hud-row-primary { grid-template-columns: 1fr 2fr; }
+.hud-row-secondary { grid-template-columns: 2fr 1fr 1fr; }
+
 .hud-item {
   display: flex;
   align-items: center;
@@ -746,8 +762,7 @@ body.editing .adv-move { cursor: pointer; }
   .grid-2 { grid-template-columns: 1fr; }
   .apparence-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .hud-strip { grid-template-columns: repeat(2, 1fr); }
-  .hud-item.wide { grid-column: span 2; }
+  .hud-row-primary, .hud-row-secondary { grid-template-columns: 1fr; }
   .advanced-grid { grid-template-columns: 1fr; }
   .story-grid { grid-template-columns: 1fr; }
   .people-grid { grid-template-columns: 1fr; }

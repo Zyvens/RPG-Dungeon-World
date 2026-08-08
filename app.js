@@ -31,11 +31,6 @@
     halfling: "Quando desafiar o perigo e usar seu tamanho diminuto em sua vantagem, receba +1.",
     humano: "Uma vez por batalha, você pode rolar novamente um rolamento de dano (seu ou de outra pessoa).",
   };
-  const DEFENSES_DESC = {
-    malha: "Cota de malha (armadura 1, peso 1) e equipamento de aventureiro (peso 1).",
-    escamas: "Armadura de escamas (armadura 2, peso 3).",
-  };
-
   const DEFAULT_STATE = {
     fields: {
       firstName: "Kael",
@@ -56,6 +51,13 @@
       wisdom: 12,
       charisma: 10,
 
+      debility_strength: false,
+      debility_dexterity: false,
+      debility_constitution: false,
+      debility_intelligence: false,
+      debility_wisdom: false,
+      debility_charisma: false,
+
       damage: "d10",
       armor: 3,
       hpCurrent: 23,
@@ -69,18 +71,19 @@
       weaponName: "Presa de Lofurin",
       weaponDesc: "machado",
       weaponDist: "corpo",
-      weaponUpg: ["serrilhado", "brilha"],
+      weaponUpg: ["serrilhado", "afiada"],
       weaponUpgCreature: "",
       weaponLook: "ornada",
 
-      bond1: "",
+      bond1: "Eira",
       bond2: "a pessoa escolhida para herdar o trono de Winterfell",
-      bond3: "Eira",
+      bond3: "",
       bond4: "",
       campaignNotes: "Proteger a pessoa escolhida para herdar o trono de Winterfell.",
 
       defenses: "escamas",
-      gearChoice: ["escudo", "moedas"],
+      gearChoice: ["escudo", "pocao"],
+      loadCurrent: 8,
 
       adv_implacavel: false, adv_reliquia: false, adv_maestriaArmadura: false,
       adv_armaMelhorada: false, adv_visaoRubra: false, adv_inquisidor: false,
@@ -254,7 +257,6 @@
     // rule-text echoes under comboboxes
     setDesc("alignment", ALIGNMENT_DESC);
     setDesc("race", RACE_DESC);
-    setDesc("defenses", DEFENSES_DESC);
 
     // images
     Object.keys(IMG_TARGETS).forEach((key) => {
