@@ -38,6 +38,28 @@
     }
   }
 
+  function installGameplayPinSize() {
+    if (document.getElementById('gameplay-cell-pin-size')) return;
+    const style = document.createElement('style');
+    style.id = 'gameplay-cell-pin-size';
+    style.textContent = `
+      .gp-stage .gp-pin:not([data-type="boss"]){
+        width:calc(100% / var(--grid-size))!important;
+        max-width:none!important;
+        min-width:0!important;
+      }
+      .gp-stage .gp-pin[data-type="boss"]{
+        width:calc((100% / var(--grid-size)) * 2)!important;
+        max-width:none!important;
+        min-width:0!important;
+      }
+      .gp-stage .gp-pin{
+        font-size:clamp(.52rem,calc((100vw / var(--grid-size)) * .28),1rem)!important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function installInventoryStyles() {
     if (document.getElementById('dual-weight-styles')) return;
     const style = document.createElement('style');
@@ -124,6 +146,7 @@
 
   function init() {
     installRaceMove();
+    installGameplayPinSize();
     enhanceInventory();
     const observer = new MutationObserver(() => {
       enhanceInventoryLabels();
