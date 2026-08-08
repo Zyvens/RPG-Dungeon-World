@@ -1,4 +1,4 @@
-const CACHE_NAME = "kael-app-v2";
+const CACHE_NAME = "kael-app-v3";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
