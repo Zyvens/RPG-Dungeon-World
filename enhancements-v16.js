@@ -55,6 +55,21 @@
       }
       .gp-stage .gp-pin{
         font-size:clamp(.52rem,calc((100vw / var(--grid-size)) * .28),1rem)!important;
+        background:var(--pin-color,#d7edf7)!important;
+        box-shadow:0 5px 16px rgba(0,0,0,.42)!important;
+      }
+      .gp-stage .gp-pin .gp-pin-core{
+        background:rgba(9,20,31,.96)!important;
+        box-shadow:none!important;
+        border:clamp(2px,calc((100% / var(--grid-size)) * .055),4px) solid var(--pin-color,#d7edf7)!important;
+        box-sizing:border-box!important;
+      }
+      .gp-stage .gp-pin.selected{
+        outline:2px solid var(--gold)!important;
+        outline-offset:3px!important;
+      }
+      .gp-stage .gp-pin.current-turn{
+        filter:drop-shadow(0 0 6px rgba(193,154,91,.7))!important;
       }
     `;
     document.head.appendChild(style);
