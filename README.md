@@ -4,7 +4,26 @@ App instalável no tablet Android com a ficha completa de Kael Frostborn, guerre
 de Dungeon World, fiel à estrutura das páginas 11 e 12 do Manual de Classes —
 com edição total de textos, imagens e fundo, direto pelo aparelho.
 
-## Como acessar do tablet
+## Acesso via GitHub Pages (recomendado — link fixo, de qualquer lugar)
+
+Este repositório está publicado como site em:
+
+**https://zyvens.github.io/RPG-Dungeon-World/**
+
+Abra esse endereço no Chrome do celular/tablet, de qualquer rede — não precisa
+do PC ligado. Como é um domínio HTTPS de verdade, o app pode ser **instalado
+como PWA completo** (ícone próprio, tela cheia, funciona offline) usando
+"Instalar app" / "Adicionar à tela inicial" no menu do Chrome.
+
+Toda vez que os arquivos desta pasta forem alterados e enviados (`git push`)
+para o branch `main`, o site é atualizado automaticamente em 1–2 minutos.
+
+> Se o link acima ainda não estiver no ar, é preciso ativar o GitHub Pages uma
+> única vez: no repositório, vá em **Settings → Pages**, em "Build and
+> deployment" escolha **Source: Deploy from a branch**, branch **main**,
+> pasta **/ (root)**, e clique em **Save**.
+
+## Como acessar do tablet pela rede local (alternativa)
 
 O tablet e o computador precisam estar **na mesma rede Wi-Fi**.
 
@@ -24,10 +43,10 @@ O tablet e o computador precisam estar **na mesma rede Wi-Fi**.
 > Se o Windows perguntar sobre permissão de rede para o Python na primeira vez,
 > permita o acesso em "Rede Privada".
 
-## Acesso remoto (de qualquer lugar, sem precisar do PC ligado)
+## Acesso remoto alternativo (link privado, sem instalação completa)
 
-Além da versão local acima, existe uma segunda versão publicada como página
-web, para abrir do celular/tablet fora de casa:
+Além do GitHub Pages acima, existe uma terceira versão, publicada como página
+privada — útil como backup caso o Pages fique fora do ar:
 
 **https://claude.ai/code/artifact/bf4c924e-8926-4355-9f10-c4109828db1b**
 
