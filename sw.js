@@ -1,13 +1,29 @@
-const CACHE_NAME = "kael-app-v7";
+const CACHE_NAME = "kael-app-v8";
 const PRECACHE_URLS = ["./","./index.html","./styles.css","./app.js","./manifest.webmanifest","./assets/kael-portrait.webp","./assets/bg-winterfell.jpg","./assets/weapon-presa-de-lofurin.webp","./assets/shield-lobo-branco.webp","./assets/armor-escamas.webp","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-192.png","./icons/icon-maskable-512.png","./icons/favicon.png"];
 
 const UI_PATCH = `
 ;(() => {
- const KEY='kael-character-images';
- let imgs={}; try{imgs=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
- const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(imgs))}catch(e){}};
- const styles=()=>{if(document.getElementById('kael-v7'))return;const s=document.createElement('style');s.id='kael-v7';s.textContent=\`
- .notes-card textarea#gameNotes{overflow-y:hidden!important;resize:none!important}
+ const IMG_KEY='kael-character-images', RICH_KEY='kael-rich-game-notes';
+ let imgs={}; try{imgs=JSON.parse(localStorage.getItem(IMG_KEY)||'{}')}catch(e){}
+ const saveImgs=()=>{try{localStorage.setItem(IMG_KEY,JSON.stringify(imgs))}catch(e){}};
+ const styles=()=>{if(document.getElementById('kael-v8'))return;const s=document.createElement('style');s.id='kael-v8';s.textContent=\`
+ /* HUD: cards exatamente proporcionais dentro de cada linha */
+ #tab-ficha .hud-row-primary{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+ #tab-ficha .hud-row-secondary{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:12px!important}
+ #tab-ficha .hud-row-primary>.hud-item,#tab-ficha .hud-row-secondary>.hud-item{width:100%!important;min-width:0!important;max-width:none!important;flex:none!important}
+ #tab-ficha .hud-row-primary>.hud-item.wide,#tab-ficha .hud-row-secondary>.hud-item.wide{grid-column:auto!important}
+ #tab-ficha .hud-item .hud-body{min-width:0!important;width:100%!important}
+ #tab-ficha .hud-pair{width:100%!important}
+ #tab-ficha .hud-pair .hud-input{min-width:0!important;width:100%!important}
+
+ /* Carga: ocupa toda a largura e título fica numa linha */
+ #tab-equipamento .hud-strip.single{width:100%!important;display:block!important}
+ #tab-equipamento .hud-strip.single .hud-item{width:100%!important;max-width:none!important;min-width:0!important;display:flex!important}
+ #tab-equipamento .hud-strip.single .hud-body{width:100%!important;min-width:0!important}
+ #tab-equipamento .hud-strip.single .field-label{white-space:nowrap!important;font-size:.72rem!important;letter-spacing:.045em!important}
+ #tab-equipamento .hud-strip.single .hud-pair{max-width:300px!important}
+
+ /* Personagens em lista + imagem opcional */
  #dynamicPeopleGrid.people-grid,#dynamicPeopleGrid.dynamic-people{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;gap:0!important;width:100%!important}
  #dynamicPeopleGrid .person{width:100%!important;max-width:none!important;margin:0!important;padding:20px 0!important;border:0!important;border-bottom:1px solid rgba(193,154,91,.22)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
  #dynamicPeopleGrid .person:last-child{border-bottom:0!important}
@@ -17,13 +33,36 @@ const UI_PATCH = `
  .char-photo-actions{position:absolute;left:6px;right:6px;bottom:6px;display:flex;gap:5px;opacity:0;transition:.2s}.editing .char-photo-actions{opacity:1}.char-photo-actions button{flex:1;padding:6px 5px;font-size:.68rem;border-radius:7px;border:1px solid rgba(255,255,255,.2);background:rgba(4,13,22,.88);color:#fff}.char-photo-actions .remove{color:#ff9a9a}
  #dynamicPeopleGrid [data-person-key=name]{grid-column:2!important;font-size:1.05rem!important;font-weight:700!important}#dynamicPeopleGrid [data-person-key=role]{grid-column:3!important}
  #dynamicPeopleGrid textarea[data-person-key=description]{grid-column:2/-1!important;width:100%!important;min-height:170px!important;line-height:1.55!important;resize:vertical!important}.person-remove{z-index:4!important}
- @media(max-width:760px){#dynamicPeopleGrid .person-fields{grid-template-columns:96px 1fr!important}.char-photo{width:96px;height:122px;grid-column:1!important;grid-row:1/3!important}#dynamicPeopleGrid [data-person-key=name],#dynamicPeopleGrid [data-person-key=role]{grid-column:2!important}#dynamicPeopleGrid textarea[data-person-key=description]{grid-column:1/-1!important;min-height:190px!important}.char-photo-actions{opacity:1;flex-direction:column}.char-photo-actions button{font-size:.6rem;padding:4px 2px}}
+
+ /* Editor rico das anotações */
+ .notes-card #gameNotes{display:none!important}
+ .rich-notes-toolbar{position:sticky;top:58px;z-index:8;display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:9px;margin:0 0 10px;border:1px solid var(--line);border-radius:12px;background:rgba(7,17,27,.94);backdrop-filter:blur(8px)}
+ .rich-notes-toolbar button,.rich-notes-toolbar select,.rich-notes-toolbar input[type=color]{height:36px;border:1px solid var(--line);border-radius:8px;background:rgba(16,31,45,.9);color:var(--white);font:inherit;cursor:pointer}
+ .rich-notes-toolbar button{min-width:36px;padding:0 10px;font-weight:700}.rich-notes-toolbar select{padding:0 8px}.rich-notes-toolbar input[type=color]{width:42px;padding:3px}
+ .rich-notes-editor{width:100%;min-height:58vh;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(7,17,27,.55);color:var(--white);font-size:1rem;line-height:1.65;outline:none;white-space:pre-wrap;overflow-wrap:anywhere}
+ .rich-notes-editor:focus{border-color:var(--gold);background:rgba(193,154,91,.06)}
+ .rich-notes-editor:empty:before{content:'Sessão, NPCs, pistas, missões, decisões, itens, perguntas para o mestre...';color:var(--muted);pointer-events:none}
+ .rich-note-save{font-size:.78rem;color:var(--muted);min-height:1.2em;margin-top:8px}
+
+ @media(max-width:760px){
+  #tab-ficha .hud-row-primary{grid-template-columns:1fr 1fr!important}
+  #tab-ficha .hud-row-secondary{grid-template-columns:1fr 1fr 1fr!important;gap:7px!important}
+  #tab-ficha .hud-item{padding:10px 8px!important}.hud-icon{flex:0 0 auto}
+  #tab-ficha .hud-row-secondary .field-label{font-size:.6rem!important;letter-spacing:.025em!important;white-space:nowrap!important}
+  #tab-equipamento .hud-strip.single .field-label{font-size:.62rem!important;letter-spacing:0!important}
+  #dynamicPeopleGrid .person-fields{grid-template-columns:96px 1fr!important}.char-photo{width:96px;height:122px;grid-column:1!important;grid-row:1/3!important}#dynamicPeopleGrid [data-person-key=name],#dynamicPeopleGrid [data-person-key=role]{grid-column:2!important}#dynamicPeopleGrid textarea[data-person-key=description]{grid-column:1/-1!important;min-height:190px!important}.char-photo-actions{opacity:1;flex-direction:column}.char-photo-actions button{font-size:.6rem;padding:4px 2px}
+  .rich-notes-toolbar{top:52px;gap:5px;padding:7px}.rich-notes-toolbar button{padding:0 8px}.rich-notes-editor{min-height:64vh}
+ }
  \`;document.head.appendChild(s)};
- const fitNotes=()=>{const n=document.getElementById('gameNotes');if(!n)return;n.style.overflowY='hidden';n.style.resize='none';n.style.height='auto';n.style.height=Math.max(n.scrollHeight,Math.round(innerHeight*(innerWidth<=760?.64:.58)))+'px';if(!n.dataset.ag){n.dataset.ag='1';n.addEventListener('input',fitNotes)}};
  const renameHeading=()=>{document.querySelectorAll('#tab-historia h2').forEach(h=>{if(h.textContent.trim()==='Personagens do background')h.textContent='Personagens'})};
  const resizeImage=(file)=>new Promise((res,rej)=>{const r=new FileReader;r.onerror=rej;r.onload=()=>{const im=new Image;im.onerror=rej;im.onload=()=>{let w=im.width,h=im.height,m=700;if(w>m||h>m){if(w>h){h=Math.round(h*m/w);w=m}else{w=Math.round(w*m/h);h=m}}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);res(c.toDataURL('image/webp',.82))};im.src=r.result};r.readAsDataURL(file)});
- const enhance=()=>{const g=document.getElementById('dynamicPeopleGrid');if(!g)return;g.querySelectorAll('.person').forEach(p=>{const id=p.dataset.personId;if(!id||p.querySelector('.char-photo'))return;const fields=p.querySelector('.person-fields');if(!fields)return;const box=document.createElement('div');box.className='char-photo '+(imgs[id]?'':'empty');box.innerHTML='<img alt="Imagem do personagem"><div class="char-photo-placeholder">Imagem<br>opcional</div><div class="char-photo-actions"><button type="button" class="choose">Imagem</button><button type="button" class="remove">×</button></div><input type="file" accept="image/*" hidden>';if(imgs[id])box.querySelector('img').src=imgs[id];const input=box.querySelector('input');box.querySelector('.choose').onclick=()=>input.click();input.onchange=async()=>{if(!input.files[0])return;imgs[id]=await resizeImage(input.files[0]);save();box.querySelector('img').src=imgs[id];box.classList.remove('empty')};box.querySelector('.remove').onclick=()=>{delete imgs[id];save();box.querySelector('img').removeAttribute('src');box.classList.add('empty')};fields.prepend(box)});g.querySelectorAll('textarea[data-person-key=description]').forEach(a=>a.setAttribute('rows',innerWidth<=760?'8':'7'))};
- const apply=()=>{styles();renameHeading();fitNotes();enhance()};apply();new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});setTimeout(apply,100);setTimeout(apply,500);addEventListener('resize',apply);
+ const enhanceCharacters=()=>{const g=document.getElementById('dynamicPeopleGrid');if(!g)return;g.querySelectorAll('.person').forEach(p=>{const id=p.dataset.personId;if(!id||p.querySelector('.char-photo'))return;const fields=p.querySelector('.person-fields');if(!fields)return;const box=document.createElement('div');box.className='char-photo '+(imgs[id]?'':'empty');box.innerHTML='<img alt="Imagem do personagem"><div class="char-photo-placeholder">Imagem<br>opcional</div><div class="char-photo-actions"><button type="button" class="choose">Imagem</button><button type="button" class="remove">×</button></div><input type="file" accept="image/*" hidden>';if(imgs[id])box.querySelector('img').src=imgs[id];const input=box.querySelector('input');box.querySelector('.choose').onclick=()=>input.click();input.onchange=async()=>{if(!input.files[0])return;imgs[id]=await resizeImage(input.files[0]);saveImgs();box.querySelector('img').src=imgs[id];box.classList.remove('empty')};box.querySelector('.remove').onclick=()=>{delete imgs[id];saveImgs();box.querySelector('img').removeAttribute('src');box.classList.add('empty')};fields.prepend(box)});g.querySelectorAll('textarea[data-person-key=description]').forEach(a=>a.setAttribute('rows',innerWidth<=760?'8':'7'))};
+ const cmd=(name,value=null)=>{document.execCommand(name,false,value)};
+ const enhanceNotes=()=>{const ta=document.getElementById('gameNotes');if(!ta||document.getElementById('richGameNotes'))return;const toolbar=document.createElement('div');toolbar.className='rich-notes-toolbar';toolbar.innerHTML='<button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><select data-font><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Verdana">Verdana</option><option value="Courier New">Courier</option><option value="Times New Roman">Times</option></select><select data-size><option value="2">Pequena</option><option value="3" selected>Normal</option><option value="4">Média</option><option value="5">Grande</option><option value="6">Muito grande</option></select><input type="color" data-color value="#f7f3e9" title="Cor da fonte"><button type="button" data-cmd="justifyLeft">≡</button><button type="button" data-cmd="justifyCenter">≣</button><button type="button" data-cmd="insertUnorderedList">• Lista</button><button type="button" data-clear>Limpar formato</button>';
+ const ed=document.createElement('div');ed.id='richGameNotes';ed.className='rich-notes-editor';ed.contentEditable='true';ed.spellcheck=true;let saved='';try{saved=localStorage.getItem(RICH_KEY)||''}catch(e){};if(saved)ed.innerHTML=saved;else ed.textContent=ta.value||'';const st=document.createElement('p');st.className='rich-note-save';ta.insertAdjacentElement('beforebegin',toolbar);ta.insertAdjacentElement('beforebegin',ed);ta.insertAdjacentElement('afterend',st);
+ const sync=()=>{try{localStorage.setItem(RICH_KEY,ed.innerHTML)}catch(e){};ta.value=ed.innerText;ta.dispatchEvent(new Event('input',{bubbles:true}));st.textContent='Salvando…';clearTimeout(ed._sv);ed._sv=setTimeout(()=>{st.textContent='Salvo automaticamente.';setTimeout(()=>{if(st.textContent==='Salvo automaticamente.')st.textContent=''},1500)},450)};ed.addEventListener('input',sync);
+ toolbar.querySelectorAll('[data-cmd]').forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.onclick=()=>{ed.focus();cmd(b.dataset.cmd);sync()}});toolbar.querySelector('[data-font]').onchange=e=>{ed.focus();cmd('fontName',e.target.value);sync()};toolbar.querySelector('[data-size]').onchange=e=>{ed.focus();cmd('fontSize',e.target.value);sync()};toolbar.querySelector('[data-color]').oninput=e=>{ed.focus();cmd('foreColor',e.target.value);sync()};toolbar.querySelector('[data-clear]').onclick=()=>{ed.focus();cmd('removeFormat');sync()};};
+ const apply=()=>{styles();renameHeading();enhanceCharacters();enhanceNotes()};apply();new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});setTimeout(apply,100);setTimeout(apply,500);addEventListener('resize',apply);
 })();`;
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(PRECACHE_URLS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE_NAME).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
