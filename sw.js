@@ -1,4 +1,4 @@
-const CACHE_NAME = "kael-app-v12";
+const CACHE_NAME = "kael-app-v13";
 const PRECACHE_URLS = ["./","./index.html","./styles.css","./app.js","./gameplay.js","./manifest.webmanifest","./assets/kael-portrait.webp","./assets/bg-winterfell.jpg","./assets/weapon-presa-de-lofurin.webp","./assets/shield-lobo-branco.webp","./assets/armor-escamas.webp","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-192.png","./icons/icon-maskable-512.png","./icons/favicon.png"];
 
 const UI_PATCH = `
