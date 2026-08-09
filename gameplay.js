@@ -7,5 +7,8 @@
     s.onerror = reject;
     document.head.appendChild(s);
   });
-  load('./gameplay-legacy.js').then(() => load('./enhancements-v17.js')).catch(() => {});
+  load('./gameplay-legacy.js')
+    .then(() => load('./enhancements-v17.js'))
+    .then(() => load('./turns-basic-v22.js'))
+    .catch(() => {});
 })();
