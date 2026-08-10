@@ -13,7 +13,7 @@
     .then(() => load('./turns-basic-v22.js'))
     .catch(err => console.error('[Kael gameplay]', err));
 
-  // Cloud sync is intentionally independent so a Gameplay error never blocks auth/sync.
-  load('./neon-sync-v2.js')
+  // Cloud sync is independent so Gameplay errors never block account/sync.
+  load('./neon-sync-v3.js')
     .catch(err => console.error('[Kael Neon loader]', err));
 })();
