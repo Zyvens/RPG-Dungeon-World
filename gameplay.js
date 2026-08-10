@@ -18,6 +18,6 @@
     .catch(err => console.error('[Kael gameplay]', err));
 
   // Cloud sync is independent so Gameplay errors never block account/sync.
-  load('./neon-sync-v3.js')
+  load('./neon-sync-v4.js')
     .catch(err => console.error('[Kael Neon loader]', err));
 })();
