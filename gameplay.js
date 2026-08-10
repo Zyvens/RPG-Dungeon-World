@@ -12,7 +12,7 @@
     .then(() => load('./enhancements-v17.js'))
     .then(() => load('./turns-basic-v22.js'))
     .then(() => load('./gameplay-spacing-v26.js'))
-    .then(() => load('./progression-v27.js'))
+    .then(() => load('./progression-v28.js'))
     .catch(err => console.error('[Kael gameplay]', err));
 
   // Cloud sync is independent so Gameplay errors never block account/sync.
