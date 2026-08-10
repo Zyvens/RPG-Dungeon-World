@@ -1,1 +1,1 @@
-importScripts('./sw-legacy.js?rev=25');
+importScripts('./sw-legacy.js?rev=26');
