@@ -17,8 +17,9 @@
     .then(() => load('./mobile-hud-safe-v32.js'))
     .catch(err => console.error('[Kael gameplay]', err));
 
-  // Cloud sync is independent so Gameplay errors never block account/sync.
-  load('./neon-sync-v6.js')
-    .then(() => load('./gameplay-cloud-pull-v33.js'))
+  // Single cloud-sync owner. The old automatic pull bridge created a second
+  // Neon client/session inside iOS standalone mode and could invalidate the
+  // visible sync flow.
+  load('./neon-sync-v7.js')
     .catch(err => console.error('[Kael Neon loader]', err));
 })();
