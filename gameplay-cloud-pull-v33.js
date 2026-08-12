@@ -2,12 +2,13 @@
   'use strict';
   const AUTH_URL='https://ep-shy-cell-af3t0l9d.neonauth.c-2.us-west-2.aws.neon.tech/neondb/auth';
   const DATA_API_URL='https://ep-shy-cell-af3t0l9d.apirest.c-2.us-west-2.aws.neon.tech/neondb/rest/v1';
-  const SDK_URL='https://esm.sh/@neondatabase/neon-js@0.6.2-beta?bundle';
+  const SDK_URL='https://esm.sh/@neondatabase/neon-js@0.7.0-beta?bundle';
   const VER='kael-neon-sync:version';
   const RESTORE='kael-neon-restore-view';
   const KEYS=['kael-gameplay-maps-v1','kael-gameplay-active-v1','kael-turn-order-v1'];
 
-  function sessionOf(r){const d=r?.data??r??null;return d?.user?d:(d?.session?.user?d.session:null)}
+  function sessionOf(r){const d=r?.data??r??null;return d?.session?.user?d.session:(d?.user?d:null)}
+  function hasJwt(s){return !!(s?.session?.token||s?.token)}
   function remember(){
     const tab=document.querySelector('.tab-btn.active')?.dataset.tab||'';
     sessionStorage.setItem(RESTORE,JSON.stringify({tab,x:scrollX,y:scrollY}));
@@ -18,7 +19,7 @@
       const sdk=await import(SDK_URL);
       const client=sdk.createClient({auth:{url:AUTH_URL},dataApi:{url:DATA_API_URL}});
       const s=sessionOf(await client.auth.getSession());
-      if(!s?.user)return;
+      if(!s?.user||!hasJwt(s))return;
       const {data,error}=await client.from('kael_app_state').select('payload,version,updated_at').limit(1);
       if(error)throw error;
       const row=Array.isArray(data)&&data.length?data[0]:null;
