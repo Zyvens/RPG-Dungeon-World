@@ -17,9 +17,8 @@
     .then(() => load('./mobile-hud-safe-v32.js'))
     .catch(err => console.error('[Kael gameplay]', err));
 
-  // Single cloud-sync owner. The old automatic pull bridge created a second
-  // Neon client/session inside iOS standalone mode and could invalidate the
-  // visible sync flow.
-  load('./neon-sync-v7.js')
+  // Single cloud-sync owner. v8 persists the Neon JWT inside this installed
+  // app, avoiding iOS standalone cookie/session isolation from Safari.
+  load('./neon-sync-v8.js')
     .catch(err => console.error('[Kael Neon loader]', err));
 })();
